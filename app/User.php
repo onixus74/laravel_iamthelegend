@@ -11,11 +11,10 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Laracasts\Presenter\PresentableTrait;
-use Mpociot\Teamwork\Traits\UserHasTeams;
 
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract, Friendable
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract, Friendable, Teamwork
 {
-    use Authenticatable, CanResetPassword, PresentableTrait, FollowableTrait, FriendableTrait, UserHasTeams;
+    use Authenticatable, CanResetPassword, PresentableTrait, FollowableTrait, FriendableTrait, Teamwork;
 
     /**
      * The database table used by the model.
@@ -75,6 +74,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function comments()
     {
         return $this->hasMany(Comment::class)->latest();
+    }
+
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class, 'team_members');
     }
 
 }

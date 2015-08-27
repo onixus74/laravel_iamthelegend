@@ -1,9 +1,5 @@
-/vendor
-/node_modules
 Homestead.yaml
+.env.*
 .env
-#/bootstrap/compiled.php
-.env.*.php
-.env.php
-.idea
+/.idea
 

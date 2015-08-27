@@ -26,7 +26,7 @@ class CreateTeamForm extends Request
     {
         return [
             'name' => 'required|unique:teams,name|min:5',
-            'leader' => 'required|exists:users,id'
+            'leader' => 'required|exists:users,name'
         ];
     }
 }

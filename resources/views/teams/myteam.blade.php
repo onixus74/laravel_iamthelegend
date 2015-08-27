@@ -11,7 +11,8 @@
                     @foreach ($teams as $team)
                         <li class="list-group-item">
                             <span class="badge">
-                                <a href="{{ URL::route('user_team', [studly_case(Auth::user()->name), $team->name]) }}"><i class="fa fa-eye"></i></a>
+                                <a href="{{ URL::route('user_team', [studly_case(Auth::user()->name), $team->name]) }}"><i
+                                            class="fa fa-eye"></i></a>
                             </span> {{ $team->name }}
                         </li>
                     @endforeach
@@ -27,7 +28,7 @@
                 @if (count($errors) > 0)
                     @include('partials.errors')
                 @endif
-                {!! Form::open(['class' => 'form-horizontal']) !!}
+                {!! Form::open(['route' => ['create_team', studly_case(Auth::user()->name)],'class' => 'form-horizontal']) !!}
 
                 <div class="form-group">
                     <label for="" class="col-md-4 control-label">Team Name :</label>
@@ -41,7 +42,7 @@
                     <label for="" class="col-md-4 control-label">Leader :</label>
 
                     <div class="col-md-6">
-                        <input type="text" class="form-control" value="{{ Auth::user()->name }}" disabled="disabled">
+                        <input type="text" name="leader" class="form-control" value="{{ Auth::user()->name }}">
                     </div>
                 </div>
 
@@ -60,12 +61,12 @@
         </div>
     </div>
 
-    @if (isActive('team_members'))
+    @if (isActive('user_team'))
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Team Members</div>
                 <div class="panel-body">
-                    {!! Form::open(['class' => 'form-horizontal']) !!}
+                    {!! Form::open(['route' => ['addInvitationToTeam', studly_case(Auth::user()->name), Auth::user()->currentTeam],'class' => 'form-horizontal']) !!}
                             <!--<label for="select2-button-addons-single-input-group-sm" class="control-label">Select user to add :</label>
                 <div class="input-group input-group-sm select2-bootstrap-prepend">
                     <div class="input-group-btn">
@@ -87,6 +88,15 @@
                                     @endif
                                 @endforeach
                             </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <button type="submit" class="btn btn-sm btn-success"><i
+                                        class="glyphicon glyphicon-plus"></i>
+                                Send Invitation
+                            </button>
                         </div>
                     </div>
 

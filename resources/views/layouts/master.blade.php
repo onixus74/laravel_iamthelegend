@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     {!! HTML::script('//code.jquery.com/jquery-1.11.3.min.js') !!}
     {!! HTML::style('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css') !!}
-    {{-- HTML::style('https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/flatly/bootstrap.min.css')--}}
+    {!! HTML::style('https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/flatly/bootstrap.min.css') !!}
     {!! HTML::style('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css') !!}
     {!! HTML::style('//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css') !!}
     {!! HTML::style('//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css') !!}

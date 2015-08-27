@@ -90,6 +90,11 @@ Route::group(['middleware' => 'auth'], function () {
         'uses' => 'UsersController@usersToBeAdded'
     ]);
 
+    Route::post('/@{name}/teams/{team}/members/sendInvitation', [
+        'as' => 'addInvitationToTeam',
+        'uses' => 'TeamsController@sendInvitation'
+    ]);
+
 });
 
 Route::get('/hello', function () {
