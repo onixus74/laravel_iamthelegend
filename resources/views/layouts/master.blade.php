@@ -7,6 +7,7 @@
     {!! HTML::style('https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/flatly/bootstrap.min.css') !!}
     {!! HTML::style('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css') !!}
     {!! HTML::style('//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css') !!}
+    {!! HTML::style('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker.min.css') !!}
     {!! HTML::style('//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css') !!}
     {!! HTML::style('//select2.github.io/select2/select2-3.5.2/select2.css') !!}
     {!! HTML::style('css/select2-bootstrap.css') !!}
@@ -34,6 +35,7 @@
 {!! HTML::script('//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js') !!}
 {!! HTML::script('//select2.github.io/select2/select2-3.5.2/select2.js') !!}
 {!! HTML::script('https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/1.1.1/js/md5.min.js') !!}
+{!! HTML::script('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js') !!}
 {!! HTML::script('js/app.js') !!}
 </body>
 </html>

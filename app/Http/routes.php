@@ -7,6 +7,8 @@ Route::get('/home', [
     'uses' => 'PagesController@home'
 ]);
 
+Route::resource('tournaments', 'TournamentController');
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/statuses', [
         'as' => 'statuses_path',

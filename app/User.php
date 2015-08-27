@@ -76,9 +76,4 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasMany(Comment::class)->latest();
     }
 
-    public function teams()
-    {
-        return $this->belongsToMany(Team::class, 'team_members');
-    }
-
 }

@@ -1,5 +1,11 @@
 Homestead.yaml
 .env.*
 .env
+<<<<<<< HEAD
+=======
+#/bootstrap/compiled.php
+.env.*.php
+.env.php
+>>>>>>> df0505cbb9bb4029c3aedc01cf32ef1bd6f73ba8
 /.idea
 

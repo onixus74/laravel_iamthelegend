@@ -16,5 +16,4 @@ trait Teamwork
 {
 
 
-
 }
