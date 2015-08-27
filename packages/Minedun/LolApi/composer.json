@@ -1,0 +1,19 @@
+{
+    "name": "minedun/lol-api",
+    "description": "A Wrapper for the League of Legends API",
+    "authors": [
+        {
+            "name": "minedun6",
+            "email": "yuginim@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Minedun\\LolApi\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/support": "~5"
+    }
+}
