@@ -12,6 +12,7 @@ use Auth;
 use Laracasts\Flash\Flash;
 use Mpociot\Teamwork\Facades\Teamwork;
 use redirect;
+use Input;
 
 class TeamsController extends Controller
 {
@@ -31,10 +32,11 @@ class TeamsController extends Controller
 
     public function create(CreateTeamForm $request)
     {
-        $team = new Team();
         $user = User::whereName($request->leader)->first();
-        $team->owner_id = $user->id;
-        $team->name = $request->name;
+        $team = (new Team())->fill([
+            'owner_id' => $user->id,
+            'name' => $request->name
+        ]);
         $team->save();
 
         $user->teams()->attach($team);
@@ -61,7 +63,15 @@ class TeamsController extends Controller
     {
         $Name = implode(' ', splitUpercase($name));
         $user = User::whereName($Name)->first();
+        $user->sendInvitation(User::find(Input::get('member')), Team::whereName($team)->first());
+        return redirect()->back();
     }
 
+    public function acceptTeamInvitation()
+    {
+        $team = Team::findOrFail(Input::get('teamIdToAccept'));
+        Auth::user()->acceptInvitation($team);
+        return redirect()->back();
+    }
 
 }

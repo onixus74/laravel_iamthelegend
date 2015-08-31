@@ -2,10 +2,13 @@
 
 namespace IAmLegend;
 
-use Mpociot\Teamwork\TeamworkTeam;
 
-class Team extends TeamworkTeam
+use Illuminate\Database\Eloquent\Model;
+
+class Team extends Model
 {
+    protected $table = 'teams';
+
     public function tournaments()
     {
         return $this->belongsToMany("Tounrnament");

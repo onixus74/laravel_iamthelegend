@@ -66,7 +66,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Team Members</div>
                 <div class="panel-body">
-                    {!! Form::open(['route' => ['addInvitationToTeam', studly_case(Auth::user()->name), Auth::user()->currentTeam],'class' => 'form-horizontal']) !!}
+                    {!! Form::open(['route' => ['addInvitationToTeam', studly_case(Auth::user()->name), 'LesBlaireaux'],'class' => 'form-horizontal']) !!}
                             <!--<label for="select2-button-addons-single-input-group-sm" class="control-label">Select user to add :</label>
                 <div class="input-group input-group-sm select2-bootstrap-prepend">
                     <div class="input-group-btn">
@@ -81,7 +81,7 @@
                         <label for="" class="col-md-4 control-label">Member :</label>
 
                         <div class="col-md-6">
-                            <select name="leader" class="form-control leader">
+                            <select name="member" class="form-control leader">
                                 @foreach ($friends as $friend)
                                     @if ($friend->current_team_id == null)
                                         <option value="{{ Auth::user()->find($friend->sender_id)->id }}">{{ Auth::user()->find($friend->sender_id)->name }}</option>

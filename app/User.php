@@ -4,7 +4,9 @@ namespace IAmLegend;
 
 use DraperStudio\Friendable\Contracts\Friendable;
 use DraperStudio\Friendable\Traits\Friendable as FriendableTrait;
+use IAmLegend\Contracts\Teamwork;
 use IAmLegend\Traits\FollowableTrait;
+use IAmLegend\Traits\TeamworkTrait;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -14,7 +16,7 @@ use Laracasts\Presenter\PresentableTrait;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract, Friendable, Teamwork
 {
-    use Authenticatable, CanResetPassword, PresentableTrait, FollowableTrait, FriendableTrait, Teamwork;
+    use Authenticatable, CanResetPassword, PresentableTrait, FollowableTrait, FriendableTrait, TeamworkTrait;
 
     /**
      * The database table used by the model.

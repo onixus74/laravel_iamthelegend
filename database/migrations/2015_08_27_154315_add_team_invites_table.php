@@ -8,7 +8,7 @@ class AddTeamInvitesTable extends Migration
 
     public function up()
     {
-        Schema::create('teams_invites', function (Blueprint $table) {
+        Schema::create('team_invites', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('sender_id')->unsigned();
             $table->integer('recepient_id')->unsigned();
@@ -20,7 +20,7 @@ class AddTeamInvitesTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('teams_invites');
+        Schema::dropIfExists('team_invites');
     }
 
 }

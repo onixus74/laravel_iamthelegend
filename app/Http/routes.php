@@ -97,10 +97,11 @@ Route::group(['middleware' => 'auth'], function () {
         'uses' => 'TeamsController@sendInvitation'
     ]);
 
-});
+    Route::post('/teams/accept', [
+        'as' => 'accept_team_invite',
+        'uses' => 'TeamsController@acceptTeamInvitation'
+    ]);
 
-Route::get('/hello', function () {
-    return view('pages.hello');
 });
 
 Route::controllers([
