@@ -17,7 +17,7 @@
                             <span class="time">
                                 <div>
                                     {!! Form::open(['route' => 'accept_friend_path' ,'class' => 'friends_request']) !!}
-                                        {!! Form::hidden('team', $request->team_id) !!}
+                                        {!! Form::hidden('userIdToAcceptFriendship', $request->sender_id) !!}
                                         <button type="submit" class="btn btn-xs"><i class="fa fa-check"></i></button>
                                     {!! Form::close() !!}
 

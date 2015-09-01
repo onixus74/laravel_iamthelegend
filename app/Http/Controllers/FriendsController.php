@@ -10,6 +10,7 @@ use IAmLegend\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Laracasts\Flash\Flash;
 use Redirect;
+use Input;
 
 class FriendsController extends Controller
 {

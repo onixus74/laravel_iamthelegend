@@ -84,7 +84,7 @@
                             <select name="member" class="form-control leader">
                                 @foreach ($friends as $friend)
                                     @if ($friend->current_team_id == null)
-                                        <option value="{{ Auth::user()->find($friend->sender_id)->id }}">{{ Auth::user()->find($friend->sender_id)->name }}</option>
+                                        <option value="{{ Auth::user()->find($friend->recipient_id)->id }}">{{ Auth::user()->find($friend->recipient_id)->name }}</option>
                                     @endif
                                 @endforeach
                             </select>
