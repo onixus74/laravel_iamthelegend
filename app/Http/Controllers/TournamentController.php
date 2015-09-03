@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 use IAmLegend\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
 use \Session;
+use DateTime;
 
 class TournamentController extends Controller
 {
@@ -56,7 +57,7 @@ class TournamentController extends Controller
             // store
             $tournament = new Tournament();
             $tournament->name = Input::get('name');
-            $tournament->start_time = Input::get('start_time');
+            $tournament->start_time =DateTime::createFromFormat('d/m/Y',Input::get('start_time'));
             $tournament->save();
 
             // redirect

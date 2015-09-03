@@ -18,7 +18,7 @@
             <tr>
                 <td>{{ $value->id }}</td>
                 <td>{{ $value->name }}</td>
-                <td>{{ $value->startTime }}</td>
+                <td>{{ $value->start_time }}</td>
 
                 <!-- we will also add show, edit, and delete buttons -->
                 <td>

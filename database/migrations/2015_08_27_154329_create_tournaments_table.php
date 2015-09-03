@@ -26,7 +26,7 @@ class CreateTournamentsTable extends Migration
             $table->foreign('tournament_id')->references('id')->on('tournaments')->onDelete('cascade');
 
             $table->integer('team_id')->unsigned()->index();
-            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
+            $table->foreign('team_id')->references('id')->on('teams');
         });
     }
 
@@ -37,7 +37,7 @@ class CreateTournamentsTable extends Migration
      */
     public function down()
     {
-       Schema::drop('tournaments') ;
-        Schema::drop('tournament_team') ;
+        Schema::dropIfExists('tournaments');
+        Schema::dropIfExists('tournament_team');
     }
 }

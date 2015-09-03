@@ -155,7 +155,8 @@ return [
         Mpociot\Teamwork\TeamworkServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Minedun\LolApi\LolApiServiceProvider::class,
-        Chumper\Datatable\DatatableServiceProvider::class
+//        Chumper\Datatable\DatatableServiceProvider::class
+//        'Chumper\Datatable\DatatableServiceProvider'
 
 
     ],
@@ -209,7 +210,7 @@ return [
         'HTML'      => Illuminate\Html\HtmlFacade::class,
         'Flash'     => Laracasts\Flash\Flash::class,
         'Debugbar'  => Barryvdh\Debugbar\Facade::class,
-        'Datatable' => Chumper\Datatable\Facades\DatatableFacade::class
+//        'Datatable' => 'Chumper\Datatable\Facades\DatatableFacade',
 
     ],
 
