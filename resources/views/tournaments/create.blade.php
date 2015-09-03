@@ -28,7 +28,7 @@
     {!! Form::submit('Create the Tournament!', array('class' => 'btn btn-primary')) !!}
 
     {!! Form::close() !!}
-
+{{--Test commit--}}
     </div>
 
 @stop
