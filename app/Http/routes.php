@@ -9,6 +9,7 @@ Route::get('/home', [
 
 Route::resource('tournaments', 'TournamentController');
 
+
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/statuses', [
         'as' => 'statuses_path',
@@ -20,6 +21,10 @@ Route::group(['middleware' => 'auth'], function () {
         'uses' => 'StatusesController@store'
     ]);
 
+    Route::get('/tournaments_list', [
+        'uses' => 'TournamentController@listShow'
+
+    ]);
     Route::get('/users', [
         'as' => 'browse_users',
         'uses' => 'PagesController@users'

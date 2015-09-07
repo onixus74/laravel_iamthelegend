@@ -25,6 +25,13 @@ class TournamentController extends Controller
         return view('tournaments.index')->with('tournaments', $tournaments);
     }
 
+    public function listShow()
+    {
+        //
+        $tournaments = Tournament::all();
+        return view('tournaments.list')->with('tournaments', $tournaments);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -76,6 +83,8 @@ class TournamentController extends Controller
     public function show($id)
     {
         //
+        $tournament = Tournament::find($id);
+        return view('tournaments.show', compact($tournament, 'tournament'));
     }
 
     /**

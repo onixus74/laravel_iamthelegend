@@ -11,7 +11,7 @@
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav">
 			<li class="{{ Route::is('browse_users') ? 'active' : '' }}"><a href="{{ URL::route('browse_users') }}"><i class="fa fa-users"></i> Browse Users</a></li>
-            <li class="{{ Route::is('') ? 'active' : '' }}"><a href="{{ URL::route('browse_users') }}"><i class="fa fa-sitemap"></i> Tournaments</a></li>
+            <li class="{{ Route::is('') ? 'active' : '' }}"><a href="{{ URL::Route('browse_users') }}"><i class="fa fa-sitemap"></i> Tournaments</a></li>
 		</ul>
         {!! Form::open(['url' => '/users', 'method' => 'get', 'class' => 'navbar-form navbar-left']) !!}
         <div class="form-group">
