@@ -2,6 +2,7 @@
 
 namespace DraperStudio\Friendable\Models;
 
+use IAmLegend\User;
 use Illuminate\Database\Eloquent\Model;
 
 /**

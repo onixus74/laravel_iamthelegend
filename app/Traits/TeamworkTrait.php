@@ -7,13 +7,14 @@ use IAmLegend\TeamInvite;
 use IAmLegend\TeamInviteStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Expr\BinaryOp\Mod;
 
 trait TeamworkTrait
 {
 
     public function teams()
     {
-        return $this->belongsToMany(Team::class, 'team_members');
+        return $this->belongsToMany(Team::class, 'team_members')->withTimestamps();
     }
 
     public function invites()
@@ -44,12 +45,17 @@ trait TeamworkTrait
 
     public function denyInvitation(Model $team)
     {
-        if ($this->isMember($this)) {
+        if ($this->isMember($this, Auth::user())) {
             return;
         }
         $this->findInvitation($this, $team)->update([
             'status' => TeamInviteStatus::DENIED
         ]);
+    }
+
+    public function isOwnerOfTeam(Model $team) {
+        $team = Team::findOrFail($team->getKey());
+        return $team->owner_id == Auth::user()->id;
     }
 
     public function addMemberToTeam(Model $team)
@@ -62,10 +68,10 @@ trait TeamworkTrait
 
     }
 
-    public function isMember(Model $member)
+    public function isMember(Model $team, Model $member)
     {
-        $team = Team::findOrFail($member->getKey());
-        return empty($member);
+        $team = Team::findOrFail($team->getKey());
+        return $team->members()->contains($member);
     }
 
     public function getTeamInvites()
@@ -84,5 +90,4 @@ trait TeamworkTrait
             $query->where('status', TeamInviteStatus::PENDING);
         })->first();
     }
-
 }

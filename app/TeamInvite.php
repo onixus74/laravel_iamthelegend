@@ -18,4 +18,20 @@ class TeamInvite extends Model
 
     protected $fillable = ['id'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function sender() {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function recepient() {
+        return $this->belongsTo(User::class);
+    }
+
+
+
 }

@@ -19,5 +19,5 @@ interface Teamwork
 
     public function removeMemberFromTeam( Model $team );
 
-    public function isMember( Model $team );
+    public function isMember( Model $team, Model $member );
 }

@@ -26,7 +26,7 @@ class TeamsController extends Controller
         $Name = implode(' ', splitUpercase($name));
         $user = User::whereName($Name)->first();
         $friends = $user->getAcceptedFriendships();
-        $teams = $user->teams();
+        $teams = $user->teams;
         return view('teams.myteam')->withFriends($friends)->withTeams($teams);
     }
 
@@ -56,14 +56,19 @@ class TeamsController extends Controller
 
     public function members($name, $team)
     {
-
+        $Name = implode(' ', splitUpercase($name));
+        $user = User::whereName($Name)->first();
+        $userTeam = Team::whereName($team)->first();
+        $accepted = $userTeam->getAcceptedTeamInvitations()->lists('recepient_id')->toArray();
+        return view('teams.teamMembers')->withUser($user)->withTeam($userTeam)->withAccepted($accepted);
     }
 
     public function sendInvitation($name, $team)
     {
         $Name = implode(' ', splitUpercase($name));
         $user = User::whereName($Name)->first();
-        $user->sendInvitation(User::find(Input::get('member')), Team::whereName($team)->first());
+        $team = Team::whereName($team)->first();
+        $user->sendInvitation(User::find(Input::get('member')), $team);
         return redirect()->back();
     }
 

@@ -2,8 +2,12 @@
 
 namespace IAmLegend\Http\Controllers;
 
+use Carbon\Carbon;
+use IAmLegend\Team;
 use IAmLegend\Tournament;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Laracasts\Flash\Flash;
 use Validator;
 use Illuminate\Support\Facades\Input;
 use IAmLegend\Http\Controllers\Controller;
@@ -20,14 +24,12 @@ class TournamentController extends Controller
      */
     public function index()
     {
-        //
         $tournaments = Tournament::all();
         return view('tournaments.index')->with('tournaments', $tournaments);
     }
 
     public function listShow()
     {
-        //
         $tournaments = Tournament::all();
         return view('tournaments.list')->with('tournaments', $tournaments);
     }
@@ -64,7 +66,7 @@ class TournamentController extends Controller
             // store
             $tournament = new Tournament();
             $tournament->name = Input::get('name');
-            $tournament->start_time =DateTime::createFromFormat('d/m/Y',Input::get('start_time'));
+            $tournament->start_time = DateTime::createFromFormat('d/m/Y', Input::get('start_time'));
             $tournament->save();
 
             // redirect
@@ -82,42 +84,45 @@ class TournamentController extends Controller
      */
     public function show($id)
     {
-        //
         $tournament = Tournament::find($id);
         return view('tournaments.show', compact($tournament, 'tournament'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Team enters the Tournament
      *
-     * @param  int $id
-     * @return Response
+     * @param $tournamentId
+     * @return mixed
      */
-    public function edit($id)
+    public function subscribe($tournamentId)
     {
-        //
+        $tournament = Tournament::findOrFail($tournamentId);
+        $team = Team::where('owner_id', Auth::id())->first();
+        if ( $tournament->ended() ) {
+            Flash::error("The Tournament has already started or ended.");
+            return redirect()->back();
+        }
+        if ($team->getTeamMembersCount() < 5) {
+            Flash::error("Your team needs to have a minimum of 5 members to enter a Tournament.");
+            return redirect()->back();
+        }
+        if ($tournament->hasTeam($team)) {
+            Flash::error("Your team has already entred the following Tournament.");
+            return redirect()->back();
+        }
+        $tournament->teams()->save($team);
+        Flash::success("Your Team has successfully entred the Tournament");
+        return redirect()->back();
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  Request $request
-     * @param  int $id
-     * @return Response
+     * @param $tournamentId
+     * @return \Illuminate\View\View
      */
-    public function update(Request $request, $id)
+    public function teams($tournamentId)
     {
-        //
+        $tournament = Tournament::findOrFail($tournamentId);
+        return view('tournaments.teams', compact($tournament, $tournament));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

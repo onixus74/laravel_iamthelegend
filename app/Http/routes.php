@@ -30,6 +30,11 @@ Route::group(['middleware' => 'auth'], function () {
         'uses' => 'PagesController@users'
     ]);
 
+    Route::get('/tournaments', [
+        'as' => 'tournament_path',
+        'uses' => 'PagesController@tournaments'
+    ]);
+
     Route::get('/@{name}', [
         'as' => 'profile_path',
         'uses' => 'UsersController@show'
@@ -105,6 +110,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/teams/accept', [
         'as' => 'accept_team_invite',
         'uses' => 'TeamsController@acceptTeamInvitation'
+    ]);
+
+    Route::post('/tournaments/{id}/subscribe', [
+        'as' => 'tournament_subscription',
+        'uses' => 'TournamentController@subscribe'
+    ]);
+
+    Route::get('/tournaments/{id}/teams', [
+        'as' => 'tournament_teams',
+        'uses' => 'TournamentController@teams'
     ]);
 
 });

@@ -30,7 +30,7 @@
                                 <span class="label label-sm label-icon label-success">
                             <i class="fa fa-plus"></i>
                             </span>
-                                {{ Auth::user()->find($request->sender_id)->name }}
+                                {{ $request->sender->name }}
                             </span>
                         </div>
                     </li>
